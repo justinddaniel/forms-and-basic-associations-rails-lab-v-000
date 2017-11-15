@@ -21,7 +21,7 @@ class Song < ActiveRecord::Base
 
   def note_contents=(contents)
     if !!contents
-      self.notes << Notes.find_by(contents: contents) if Notes.find_by(contents: contents)
+      self.notes << Note.find_by(contents: contents) if Note.find_by(contents: contents)
     end
   end
 
