@@ -23,7 +23,6 @@ class Song < ActiveRecord::Base
     if !!contents
       self.notes << Note.find_or_create_by(content: contents)
     end
-    self.notes.flatten!
   end
 
   def note_contents
