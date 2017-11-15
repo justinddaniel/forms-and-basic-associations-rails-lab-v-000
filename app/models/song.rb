@@ -26,6 +26,7 @@ class Song < ActiveRecord::Base
   end
 
   def note_contents
+    self.notes.flatten!
     self.notes.collect do |n|
       n.content
     end
