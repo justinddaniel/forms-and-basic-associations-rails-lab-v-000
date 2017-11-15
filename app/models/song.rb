@@ -24,4 +24,5 @@ class Song < ActiveRecord::Base
       self.notes << Notes.find_by(contents: contents) if Notes.find_by(contents: contents)
     end
   end
+  
 end
