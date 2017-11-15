@@ -21,9 +21,9 @@ class Song < ActiveRecord::Base
 
   def note_contents=(contents)
     if !!contents
-      contents = contents.join
       self.notes << Note.find_or_create_by(content: contents)
     end
+    self.notes.flatten!
   end
 
   def note_contents
