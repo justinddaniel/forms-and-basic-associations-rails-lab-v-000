@@ -24,5 +24,11 @@ class Song < ActiveRecord::Base
       self.notes << Notes.find_by(contents: contents) if Notes.find_by(contents: contents)
     end
   end
-  
+
+  def note_contents
+    self.notes.collect do |n|
+      n.content 
+    end
+  end
+
 end
