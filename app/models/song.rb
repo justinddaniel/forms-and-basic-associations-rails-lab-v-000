@@ -19,17 +19,17 @@ class Song < ActiveRecord::Base
     self.genre.name
   end
 
-  def note_contents=(contents)
-    if !!contents
-      contents = contents.join(" ")
-      self.notes < Note.find_or_create_by(content: contents)
+  def note_contents=(notes)
+    notes.each do |content|
+      if content.strip != ''
+        self.notes.build(content: content)
+      end
     end
   end
 
   def note_contents
-    self.notes.collect do |n|
-      n.content
-    end
+    self.notes.map(&:content)
   end
+end
 
 end
