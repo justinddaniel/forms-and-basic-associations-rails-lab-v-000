@@ -20,13 +20,13 @@ class Song < ActiveRecord::Base
   end
 
   def note_contents=(contents)
+    binding.pry
     if !!contents
       self.notes << Note.find_or_create_by(content: contents)
     end
   end
 
   def note_contents
-    self.notes.flatten!
     self.notes.collect do |n|
       n.content
     end
